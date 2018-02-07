@@ -1,0 +1,34 @@
+body {
+  text-align: center;
+}
+
+
+
+.card {
+  width: 100px;
+  height: 100px;
+  /* margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px; */
+  /* border: 4px solid black; */
+  display: inline-block;
+  position: relative;
+  animation: rollBall 5s 1;
+  background-image: url(caddyshack.png);
+  background-size: cover;
+  border-radius: 50%
+}
+
+
+
+
+@keyframes rollBall {
+    from {left: 600px;}
+    to {left: 0px;}
+    from {transform: rotate(720deg);}
+    to {transform: rotate(0deg);}
+}
+
+.back {
+  display: none;
+}
