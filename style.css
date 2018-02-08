@@ -17,8 +17,7 @@ span {
 }
 
 /* #totalContainer {
-  width: 800px;
-  height: 800px;
+  width: 600px;
   margin: auto;
   background: url(https://images-na.ssl-images-amazon.com/images/I/71ZKdH3RXgL._SL1079_.jpg);
 } */
@@ -54,7 +53,7 @@ span {
   width: 100px;
   height: 100px;
   position: absolute;
-  background-image: url(caddyshack.png);
+  background-image: url(img/caddyshack.png);
   background-size: cover;
   border-radius: 50%;
 
@@ -64,10 +63,9 @@ span {
   width: 100px;
   height: 100px;
   position: absolute;
-  background: green;
+  /* background-image: url(img/billBush.png); */
   background-size: cover;
   border-radius: 50%;
-
   transform: rotateY( 180deg );
 }
 
