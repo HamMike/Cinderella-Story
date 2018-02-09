@@ -3,24 +3,18 @@
 var arrayChar = ['img/billBush.png', 'img/biilCamo.png', 'img/billShack.png', 'img/AlBlue.png', 'img/AlRainbow.png', 'img/dannyHat.png', 'img/Gopher.png', 'img/judge.png', 'img/judgeGolf.png', 'img/LaceyRed.png', 'img/lacyGolf.png', 'img/tonyRed.png', 'img/tyRed.png', 'img/tyWhiteCap.png', 'img/tonyglasses.png'];
 var arrayBack = [];
 var shuffledArray = [];
-// var compareArray = [];
 
 var playerOne = true;
 var playerOneScore = 0;
 var playerTwoScore = 0;
 var totalScore = 0;
 var clickCount = 0;
+
 var image;
 var image1;
 var image2;
 var firstCard;
 var secondCard;
-
-
-// {
-//   playerOne: false,
-//   playerTwo: true
-// }
 
 //make a copy of character array and merge the two
 function gameArray() {
@@ -59,6 +53,24 @@ function changePlayer() {
     $('#player2Go').hide();
   }
 }
+
+function checkForWin() {
+  totalScore = playerOneScore + playerTwoScore;
+  if (totalScore === 15) {
+    if (playerOneScore > playerTwoScore) {
+    $('#player1Win').show();
+    $('#player2Win').hide();
+    $('#player1Go').hide();
+    $('#player2Go').hide();
+    } else if (playerOneScore < playerTwoScore) {
+    $('#player2Win').show();
+    $('#player1Win').hide();
+    $('#player1Go').hide();
+    $('#player2Go').hide();
+  }
+}
+}
+
 //click on card to flip and save image
 function flipCard() {
   var $this = $(this);
@@ -87,12 +99,9 @@ function flipCard() {
           secondCard.toggleClass('flip', false);
         }, 1000);
       }
-      changePlayer()
-      // playerOne = false;
-      // clickCount = 0;
-      // $('#player2Go').show();
-      // $('#player1Go').hide();
-
+      console.log("one " + playerOneScore);
+      checkForWin();
+      changePlayer();
     }
 
   } else {
@@ -117,11 +126,9 @@ function flipCard() {
           secondCard.toggleClass('flip', false);
         }, 1000);
       }
-      changePlayer()
-      // playerOne = true;
-      // clickCount = 0;
-      // $('#player1Go').show();
-      // $('#player2Go').hide();
+      console.log("two " + playerTwoScore);
+      checkForWin();
+      changePlayer();
     }
   }
 }
@@ -137,6 +144,8 @@ $(document).ready(function() {
   shuffleArray();
   assignImage();
   // checkForMatch();
+  $('#player1Win').hide();
+  $('#player2Win').hide();
   $('.card').on('click', flipCard);
 
-})
+});

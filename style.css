@@ -1,10 +1,19 @@
+html,body{
+  margin:0;
+  padding:0;
+}
+
 body {
   text-align: center;
+  background-size: cover;
+  background: url("http://www.trbimg.com/img-595e7966/turbine/ct-bill-murray-caddyshack-restaurant-0707-biz-20170706") center;
+  background-attachment: fixed;
 }
 
 h1 {
   color: pink;
   background: green;
+  font-size: 60px;
   width: 400px;
   margin: auto;
 }
@@ -13,6 +22,8 @@ span {
   color: brown;
   width: 200px;
   margin: auto;
+  font-size: 40px;
+  color: pink;
   background: green;
 }
 
@@ -44,7 +55,7 @@ span {
   }
 
 @keyframes rollBall {
-    from {left: 600px;}
+    from {left: 800px;}
     to {left: 0px;}
     from {transform: rotate(720deg);}
     to {transform: rotate(0deg);}
@@ -67,6 +78,7 @@ span {
   background-size: cover;
   border-radius: 50%;
 
+  box-shadow: 4px 4px 4px white;
   transform: rotateY( 180deg );
 }
 
