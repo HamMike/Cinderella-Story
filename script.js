@@ -46,6 +46,19 @@ function assignImage() {
   })
 }
 
+function changePlayer() {
+  if (playerOne === true) {
+    playerOne = false;
+    clickCount = 0;
+    $('#player2Go').show();
+    $('#player1Go').hide();
+  } else {
+    playerOne = true;
+    clickCount = 0;
+    $('#player1Go').show();
+    $('#player2Go').hide();
+  }
+}
 //click on card to flip and save image
 function flipCard() {
   var $this = $(this);
@@ -74,11 +87,11 @@ function flipCard() {
           secondCard.toggleClass('flip', false);
         }, 1000);
       }
-
-      playerOne = false;
-      clickCount = 0;
-      $('#player2Go').show();
-      $('#player1Go').hide();
+      changePlayer()
+      // playerOne = false;
+      // clickCount = 0;
+      // $('#player2Go').show();
+      // $('#player1Go').hide();
 
     }
 
@@ -104,13 +117,15 @@ function flipCard() {
           secondCard.toggleClass('flip', false);
         }, 1000);
       }
-      playerOne = true;
-      clickCount = 0;
-      $('#player1Go').show();
-      $('#player2Go').hide();
+      changePlayer()
+      // playerOne = true;
+      // clickCount = 0;
+      // $('#player1Go').show();
+      // $('#player2Go').hide();
     }
   }
 }
+
 
 
 $(document).ready(function() {
