@@ -3,39 +3,33 @@
 var arrayChar = ['img/billBush.png', 'img/biilCamo.png', 'img/billShack.png', 'img/AlBlue.png', 'img/AlRainbow.png', 'img/dannyHat.png', 'img/Gopher.png', 'img/judge.png', 'img/judgeGolf.png', 'img/LaceyRed.png', 'img/lacyGolf.png', 'img/tonyRed.png', 'img/tyRed.png', 'img/tyWhiteCap.png', 'img/tonyglasses.png'];
 var arrayBack = [];
 var shuffledArray = [];
+var compareArray = [];
 
+var playerTurn = true;
+var playerOneScore = 0;
+var playerTwoScore = 0;
+var totalScore = 0;
+var image;
 
-//click on card to flip
-function flipCard() {
-  $('.card').on('click', function(){
-    $(this).toggleClass('flipped');
-    console.log('div clicked');
-  })
-}
+// {
+//   playerOne: false,
+//   playerTwo: true
+// }
 
-//make a copy of character array
+//make a copy of character array and merge the two
 function gameArray() {
   arrayChar.forEach(function(img) {
     arrayBack.push(img);
   })
-}
-
-//merge the copy array and original array
-function mergeArray(){
-  // arrayChar = $.merge(arrayChar, arrayBack);
   arrayChar = arrayChar.concat(arrayBack);
 }
 
-//shuffle  merged array
+//shuffle merged array
 function shuffleArray() {
-  //define a var that will not change as proceeded through the loop
   var shuffleCount = arrayChar.length;
-  console.log(arrayChar.length);
   for(var i = 0; i < shuffleCount; i++) {
-      //makes sure the array length never exceeds the current array length
   		var shuffledIndex = Math.round(Math.random() * (arrayChar.length - 1));
   		shuffledArray[i] = arrayChar.splice(shuffledIndex, 1)[0];
-      // console.log(shuffledArray);
     }
 }
 
@@ -46,15 +40,55 @@ function assignImage() {
   })
 }
 
+//click on card to flip
+function flipCard() {
+  $('.card').on('click', function(){
+    $(this ).toggleClass('flip', true);
+    image = $(this).children("div:nth-child(2)").css('background-image');
+    console.log(image)
+  })
+
+}
+
+// function checkForMatch() {
+//   $('.front').on('click', function() {
+//     console.log('clicked back');
+//     //store back card image in variable
+//   })
+// }
+
+
+// switch player
+if (playerTurn) {
+  //player one logic
+  $('#player1Go').show();
+  $('#player2Go').hide();
+  flipCard();
+
+} else {
+  //player two logic
+  $('#player2Go').show();
+  $('#player1Go').hide();
+  flipCard();
+}
+
+// function flipCard() {
+//   $('.card').on('click', function(){
+//     $(this).firstChild.style = ('opacity: 0;');
+//     $(this).lastChild.style = ('opacity: 1;');
+//
+//   })
+//
+// }
+
 
 $(document).ready(function() {
 
 
-flipCard();
+// flipCard();
 gameArray();
-mergeArray();
+// mergeArray();
 shuffleArray();
 assignImage();
-// console.log(shuffledArray);
-
+// checkForMatch();
 })

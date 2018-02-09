@@ -66,9 +66,10 @@ span {
   /* background-image: url(img/billBush.png); */
   background-size: cover;
   border-radius: 50%;
+
   transform: rotateY( 180deg );
 }
 
-.flipped {
+.flip {
   transform: rotateY(180deg);
 }
