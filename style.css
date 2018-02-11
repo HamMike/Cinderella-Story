@@ -6,25 +6,25 @@ html,body{
 body {
   text-align: center;
   background-size: cover;
-  background: url("http://www.trbimg.com/img-595e7966/turbine/ct-bill-murray-caddyshack-restaurant-0707-biz-20170706") center;
+  /* background: url("http://www.trbimg.com/img-595e7966/turbine/ct-bill-murray-caddyshack-restaurant-0707-biz-20170706") center; */
   background-attachment: fixed;
 }
 
 h1 {
-  color: pink;
-  background: green;
+  color: #f28e95;
+  background: #8b9d83;
   font-size: 60px;
   width: 400px;
   margin: auto;
 }
 
 span {
-  color: brown;
+  color: #eee8e1;
   width: 200px;
   margin: auto;
   font-size: 40px;
-  color: pink;
-  background: green;
+  color: #f28e95;
+  background: #8b9d83;
 }
 
 /* #totalContainer {
@@ -76,9 +76,10 @@ span {
   position: absolute;
   /* background-image: url(img/billBush.png); */
   background-size: cover;
+  border: 4px #27222e solid;
   border-radius: 50%;
 
-  box-shadow: 4px 4px 4px white;
+  /* box-shadow: 4px 4px 4px #eee8e1; */
   transform: rotateY( 180deg );
 }
 

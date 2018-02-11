@@ -1,8 +1,8 @@
-'use strict';
+// 'use strict';
 
-var arrayChar = ['img/billBush.png', 'img/biilCamo.png', 'img/billShack.png', 'img/AlBlue.png', 'img/AlRainbow.png', 'img/dannyHat.png', 'img/Gopher.png', 'img/judge.png', 'img/judgeGolf.png', 'img/LaceyRed.png', 'img/lacyGolf.png', 'img/tonyRed.png', 'img/tyRed.png', 'img/tyWhiteCap.png', 'img/tonyglasses.png'];
-var arrayBack = [];
-var shuffledArray = [];
+var castImages = ['img/billBush.png', 'img/biilCamo.png', 'img/billShack.png', 'img/AlBlue.png', 'img/AlRainbow.png', 'img/dannyHat.png', 'img/Gopher.png', 'img/judge.png', 'img/judgeGolf.png', 'img/LaceyRed.png', 'img/lacyGolf.png', 'img/tonyRed.png', 'img/tyRed.png', 'img/tyWhiteCap.png', 'img/tonyglasses.png'];
+var doubledCastImgs = [];
+var shuffledCastImgs = [];
 
 var playerOne = true;
 var playerOneScore = 0;
@@ -18,60 +18,51 @@ var secondCard;
 
 //make a copy of character array and merge the two
 function gameArray() {
-  arrayChar.forEach(function(img) {
-    arrayBack.push(img);
+  castImages.forEach(function(img) {
+    doubledCastImgs.push(img);
   })
-  arrayChar = arrayChar.concat(arrayBack);
+  castImages = castImages.concat(doubledCastImgs);
 }
 
 //shuffle merged array
 function shuffleArray() {
-  var shuffleCount = arrayChar.length;
+  var shuffleCount = castImages.length;
   for(var i = 0; i < shuffleCount; i++) {
-  		var shuffledIndex = Math.round(Math.random() * (arrayChar.length - 1));
-  		shuffledArray[i] = arrayChar.splice(shuffledIndex, 1)[0];
+  		var shuffledIndex = Math.round(Math.random() * (castImages.length - 1));
+  		shuffledCastImgs[i] = castImages.splice(shuffledIndex, 1)[0];
     }
 }
 
 //assign newly shuffled background image to back of cards
 function assignImage() {
   $('.back').each(function(index) {
-    this.style = ('background-image: ' + 'url(' + shuffledArray[index] + ');');
+    this.style = ('background-image: ' + 'url(' + shuffledCastImgs[index] + ');');
   })
 }
 
-function changePlayer() {
-  if (playerOne === true) {
-    playerOne = false;
-    clickCount = 0;
-    $('#player2Go').show();
-    $('#player1Go').hide();
-  } else {
-    playerOne = true;
-    clickCount = 0;
-    $('#player1Go').show();
-    $('#player2Go').hide();
-  }
-}
-
-function checkForWin() {
+// checks for player turn as well as if a player has one
+function playerStatus() {
   totalScore = playerOneScore + playerTwoScore;
   if (totalScore === 15) {
     if (playerOneScore > playerTwoScore) {
-    $('#player1Win').show();
-    $('#player2Win').hide();
-    $('#player1Go').hide();
-    $('#player2Go').hide();
+      $('#playerPrompt').text("Player One Wins");
     } else if (playerOneScore < playerTwoScore) {
-    $('#player2Win').show();
-    $('#player1Win').hide();
-    $('#player1Go').hide();
-    $('#player2Go').hide();
-  }
+      $('#playerPrompt').text("Player Two Wins");;
+    }
+  } else {
+    if (playerOne === true) {
+      playerOne = false;
+      clickCount = 0;
+      $('#playerPrompt').text("Player Two's Turn");
+    } else {
+      playerOne = true;
+      clickCount = 0;
+      $('#playerPrompt').text("Player One's Turn");
+    }
 }
 }
 
-//click on card to flip and save image
+//click on card to flip and save image for comparison
 function flipCard() {
   var $this = $(this);
 
@@ -100,8 +91,7 @@ function flipCard() {
         }, 1000);
       }
       console.log("one " + playerOneScore);
-      checkForWin();
-      changePlayer();
+      playerStatus();
     }
 
   } else {
@@ -127,25 +117,45 @@ function flipCard() {
         }, 1000);
       }
       console.log("two " + playerTwoScore);
-      checkForWin();
-      changePlayer();
+      playerStatus();
     }
   }
 }
 
+//resets game board and counters
+function gameReset() {
+  castImages = ['img/billBush.png', 'img/biilCamo.png', 'img/billShack.png', 'img/AlBlue.png', 'img/AlRainbow.png', 'img/dannyHat.png', 'img/Gopher.png', 'img/judge.png', 'img/judgeGolf.png', 'img/LaceyRed.png', 'img/lacyGolf.png', 'img/tonyRed.png', 'img/tyRed.png', 'img/tyWhiteCap.png', 'img/tonyglasses.png'];
+
+  doubledCastImgs = [];
+  shuffledCastImgs = [];
+
+  playerOne = true;
+  playerOneScore = 0;
+  playerTwoScore = 0;
+  totalScore = 0;
+  clickCount = 0;
+
+  $('.card').each(function() {
+    $(this).toggleClass('flip', false);
+  })
+
+setTimeout(function() {
+  gameArray();
+  shuffleArray();
+  assignImage();
+    }, 1000);
+
+  $('#playerPrompt').text("Player One's Turn");
+}
 
 
 $(document).ready(function() {
 
-
-  // flipCard();
   gameArray();
-  // mergeArray();
   shuffleArray();
   assignImage();
-  // checkForMatch();
-  $('#player1Win').hide();
-  $('#player2Win').hide();
+
   $('.card').on('click', flipCard);
+  $('#resetBoard').on('click', gameReset);
 
 });
