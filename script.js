@@ -45,9 +45,9 @@ function playerStatus() {
   totalScore = playerOneScore + playerTwoScore;
   if (totalScore === 15) {
     if (playerOneScore > playerTwoScore) {
-      $('#playerPrompt').text("Player One Wins");
+      $('#playerPrompt').text("Player One Wins. So you got that going for you, which is nice.");
     } else if (playerOneScore < playerTwoScore) {
-      $('#playerPrompt').text("Player Two Wins");;
+      $('#playerPrompt').text("Player Two Wins. So you got that going for you, which is nice.﻿");;
     }
   } else {
     if (playerOne === true) {
@@ -100,12 +100,10 @@ function flipCard() {
       firstCard = $this;
       image1 = firstCard.children("div:nth-child(2)").css('background-image');
       clickCount++;
-      console.log(image1);
     } else if (clickCount === 1) {
       secondCard = $this;
       image2 = secondCard.children("div:nth-child(2)").css('background-image');
       clickCount++;
-      console.log(image2);
     }
     if (clickCount === 2) {
       if (image1 === image2) {
@@ -116,7 +114,6 @@ function flipCard() {
           secondCard.toggleClass('flip', false);
         }, 1000);
       }
-      console.log("two " + playerTwoScore);
       playerStatus();
     }
   }

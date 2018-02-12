@@ -6,7 +6,6 @@ html,body{
 body {
   text-align: center;
   background-size: cover;
-  /* background: url("http://www.trbimg.com/img-595e7966/turbine/ct-bill-murray-caddyshack-restaurant-0707-biz-20170706") center; */
   background-attachment: fixed;
   font-family: 'Fascinate', cursive;
   text-shadow: -1px 0 #27222E, 0 1px #27222E, 1px 0 #27222E, 0 -1px #27222E;
@@ -127,4 +126,100 @@ span {
 
 .flip {
   transform: rotateY(180deg);
+}
+
+@media (max-width: 768px) {
+h1 {
+  font-size: 40px;
+  width: 768px;
+}
+
+button {
+    width: 300px;
+    height: 40px;
+}
+
+#playerturncontainer {
+  width: 768px;
+  margin: auto;
+}
+
+#gamecontainer {
+  width: 768px;
+  margin: auto;
+}
+
+span {
+  width: 768px;
+  margin: auto;
+  font-size: 30px;
+}
+
+.card {
+  width: 80px;
+  height: 80px;
+  margin: 0;
+}
+
+.card div {
+    height: 80px;
+    width: 80px;
+}
+
+.front {
+  width: 80px;
+  height: 80px;
+}
+
+.back {
+  width: 80px;
+  height: 80px;
+}
+
+@media (max-width: 420px) {
+h1 {
+  font-size: 30px;
+  width: 400px;
+}
+
+button {
+    width: 200px;
+    height: 30px;
+}
+
+#playerturncontainer {
+  width: 400px;
+  margin: auto;
+}
+
+#gamecontainer {
+  width: 400px;
+  margin: auto;
+}
+
+span {
+  width: 400px;
+  margin: auto;
+  font-size: 20px;
+}
+
+.card {
+  width: 60px;
+  height: 60px;
+  margin: 0;
+}
+
+.card div {
+    height: 60px;
+    width: 60px;
+}
+
+.front {
+  width: 60px;
+  height: 60px;
+}
+
+.back {
+  width: 60px;
+  height: 60px;
 }
