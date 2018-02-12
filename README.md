@@ -8,6 +8,8 @@ Cinderella-Story is a two person, CaddyShack themed, memory game. When the page 
 
 
 Technologies:
+HTML5
+CSS
 jQuery
 pixlr
 
