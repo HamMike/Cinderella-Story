@@ -145,7 +145,7 @@ setTimeout(function() {
   assignImage();
     }, 1000);
 
-  $('#playerPrompt').text("Player One's Turn");
+  $('#playerPrompt').text("Player One Begin");
 }
 
 
@@ -156,6 +156,6 @@ $(document).ready(function() {
   assignImage();
 
   $('.card').on('click', flipCard);
-  $('#resetBoard').on('click', gameReset);
+  $('button').on('click', gameReset);
 
 });
